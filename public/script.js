@@ -11,14 +11,22 @@ function signupClickHandler(event){
     // add the values to an object
     // display that object, save it to the back end
     const data = {
-        fname: $('input[name="fname"]').val(),
-        lname: $('input[name="lname"]').val(),
+        firstName: $('input[name="fname"]').val(),
+        lastName: $('input[name="lname"]').val(),
         email: $('input[name="email"]').val()
     }
     
     console.log("User finished signing up!");
     console.log("ready to save user: ", data); 
 
+    fetch('http://localhost:3000/api/leads', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json());
     window.location.assign('survey.html');
 }
 
