@@ -18,6 +18,7 @@ function signupClickHandler(event){
     
     console.log("User finished signing up!");
     console.log("ready to save user: ", data); 
+
     window.location.assign('survey.html');
 }
 
