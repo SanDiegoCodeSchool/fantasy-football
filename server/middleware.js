@@ -1,4 +1,6 @@
-{
+console.log('LOADING MIDDLEWARE :::::::::');
+
+module.exports = {
   "initial:before": {
     "loopback#favicon": {}
   },
@@ -29,14 +31,12 @@
     }
   },
   "files": {
-    "loopback#static": [{
-        "params": "$!../build"
-      },
-      {
-        "params": "$!../public"
-      }]
+    "loopback#static": {
+      "params": "$!../build"
+    }
   },
   "final": {
+    "./middleware/custom-error": {}
   },
   "final:after": {
     "strong-error-handler": {}
