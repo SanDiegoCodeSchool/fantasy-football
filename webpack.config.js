@@ -3,15 +3,22 @@ const path = require('path');
 const config = {
 devtool:'source-map',
   entry: [
-      path.resolve(__dirname, 'client', 'src'), 
+      path.resolve(__dirname, 'client', 'src', 'index.js'), 
       path.resolve(__dirname, 'client', 'src', 'styles.scss')],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
+  resolve: {
+    modules : [
+       path.resolve("./src"),
+       path.resolve("./node_modules")
+    ],
+    extensions: ['*', '.js', '.jsx']
+  },
   module: {
     rules: [{
-      test: /\.jsx?$/,
+      test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
