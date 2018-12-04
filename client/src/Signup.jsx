@@ -1,22 +1,13 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Signup extends Component {
-    constructor(){
-        super();
-        this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-        };
-        this.clickHandler = this.clickHandler.bind(this);
-        this.changeHandler = this.changeHandler.bind(this);
-    }
 
-    clickHandler(e) {
+
+const Signup = () => {
+    function clickHandler(e) {
         e.preventDefault();
         fetch('/api/leads', {
             method: "POST", 
-            body: JSON.stringify(this.state), 
+            body: JSON.stringify(formData), 
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
             },
@@ -30,27 +21,33 @@ class Signup extends Component {
         })
         .catch(err => console.log(err));
     }
-    changeHandler(e) {
+
+    function changeHandler(e) {
         const name = e.target.name;
         const value = e.target.value;
-        this.setState({
-            [name]: value
+        setUserData({
+            ...formData, [name]: value
         });
+        console.log(formData);
     }
 
-    render() {
-        return (
-            <div>
-                <form>
-                    <input onChange={this.changeHandler} type="text" name="firstName" placeholder="First Name" />
-                    <input onChange={this.changeHandler} type="text" name="lastName" placeholder="Last Name" />
-                    <input onChange={this.changeHandler} type="email" name="email" placeholder="E-mail" />
-                    <button onClick={this.clickHandler}>Next</button>
-                </form>
-                <p>Page 2/3</p>
-            </div>
-        );
-    };
+    const [formData, setUserData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+    });
+    
+    return (
+        <div>
+            <form>
+                <input onChange={changeHandler} type="text" name="firstName" placeholder="First Name" />
+                <input onChange={changeHandler} type="text" name="lastName" placeholder="Last Name" />
+                <input onChange={changeHandler} type="email" name="email" placeholder="E-mail" />
+                <button onClick={clickHandler}>Next</button>
+            </form>
+            <p>Page 2/3</p>
+        </div>
+    )
 };
 
 export default Signup;

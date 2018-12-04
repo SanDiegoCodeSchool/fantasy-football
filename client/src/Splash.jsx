@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
+import { Box } from 'grommet';
 
-class Splash extends Component {
-    constructor(){
-        super();
-        this.clickHandler = this.clickHandler.bind(this);
-    }
+function clickHandler() {
+    window.location.assign("/#signup");
+}
 
-    clickHandler() {
-        window.location.assign("/#signup");
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>Welcome To Fan Picks</h1>
-                <button onClick={this.clickHandler}>Click to Get Started</button>
-                <p>Page 1/4</p>
-            </div>
-        );
-    };
-};
+const Splash = () => (
+    <Box direction='column' align="center" background="brand">
+        <h1>Welcome To Fan Picks</h1>
+        <button onClick={clickHandler}>Click to Get Started</button>
+        <p>Page 1/4</p>
+    </Box>
+);
 
 export default Splash;
