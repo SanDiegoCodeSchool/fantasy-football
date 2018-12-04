@@ -6,7 +6,8 @@ class Offer extends Component {
             <div>
                 <h1>Great, your picks are on the way</h1>
                 <a href="#" className="href">Click on our fanpicks affiliate link to help us out.</a>
-            </div>
+                <p>Page 3/3</p>
+            </div>  
         );
     };
 };

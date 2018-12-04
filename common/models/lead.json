@@ -19,6 +19,9 @@
     },
     "phone": {
       "type": "string"
+    },
+    "league": {
+      "type": "string"
     }
   },
   "validations": [],
